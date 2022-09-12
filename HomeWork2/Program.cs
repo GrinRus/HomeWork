@@ -13,13 +13,15 @@
                 case 1: evenOrOdd(); break;
                 case 2: game21(); break;
                 case 3: primeNumber(); break;
-                case 4: return;
+                case 4: minNumber(); break;
+                case 5: guessTheNumber(); break;
             }
         }
     }
+
     private static void printMenu()
     {
-        Console.WriteLine("0. Exit 1. Odd or even 2. 21 game 3. prime number");
+        Console.WriteLine("0. Exit 1. Odd or even 2. 21 game 3. prime number 4. min number 5. Guess the number");
     }
     private static void evenOrOdd()
     {
@@ -88,9 +90,69 @@
         if (isPrime)
         {
             Console.WriteLine("Число является простым");
-        } else
+        }
+        else
         {
             Console.WriteLine("Число НЕ является простым");
+        }
+    }
+
+    private static void minNumber()
+    {
+        Console.WriteLine("Сколько чисел в последовательности");
+
+        int numbersCount = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Какие числа");
+
+        int minNumber = int.MaxValue;
+
+        for (int i = numbersCount; i > 0; i--)
+        {
+            int tempVal = int.Parse(Console.ReadLine());
+            if (tempVal < minNumber)
+            {
+                minNumber = tempVal;
+            }
+        }
+
+        Console.WriteLine($"Минимальное число: {minNumber}");
+    }
+
+    private static void guessTheNumber()
+    {
+        Console.WriteLine("Какое максимальное число будем угадывать");
+
+        int maxNum = int.Parse(Console.ReadLine());
+
+        Random random = new Random();
+
+        int generatedNum = random.Next(maxNum + 1);
+
+        while (true)
+        {
+            Console.WriteLine("Введите число");
+
+            string readLine = Console.ReadLine();
+            if (readLine.Equals(""))
+            {
+                Console.WriteLine($"Вы не угадали, число: {generatedNum}");
+                break;
+            }
+            int insertedNum = int.Parse(readLine);
+
+            if (insertedNum == generatedNum)
+            {
+                Console.WriteLine($"Вы угадали, число: {generatedNum}");
+            }
+            else if (insertedNum > generatedNum)
+            {
+                Console.WriteLine("Введеное число больше");
+            }
+            else if (insertedNum < generatedNum)
+            {
+                Console.WriteLine("Введеное число меньше");
+            }
         }
     }
 }
