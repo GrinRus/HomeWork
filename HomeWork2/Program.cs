@@ -25,134 +25,26 @@
     }
     private static void evenOrOdd()
     {
-        Console.WriteLine("Введите целое число");
 
-        string input = Console.ReadLine();
-
-        int parsedInput = int.Parse(input);
-
-        if (parsedInput % 2 == 1)
-        {
-            Console.WriteLine("Нечетное число");
-        }
-        else
-        {
-            Console.WriteLine("Четно число");
-        }
-        return;
     }
 
     private static void game21()
     {
-        Console.WriteLine("Сколько карт на руках");
 
-        int cardCount = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Какие карты");
-
-        int cardSum = 0;
-
-        for (int i = cardCount; i > 0; i--)
-        {
-            string card = Console.ReadLine();
-            int result;
-            bool isInt = int.TryParse(card, out result);
-            switch (isInt)
-            {
-                case true: cardSum += result; break;
-                case false: cardSum += 10; break;
-                default: throw new Exception();
-            }
-        }
-
-        Console.WriteLine($"Сумма карт: {cardSum}");
     }
 
     private static void primeNumber()
     {
-        Console.WriteLine("Введите целое число");
 
-        int number = int.Parse(Console.ReadLine());
-
-        bool isPrime = true;
-
-        int someInt = 2;
-
-        while (someInt < number)
-        {
-            if (number % someInt == 0)
-            {
-                isPrime = false;
-            }
-            someInt++;
-        }
-
-        if (isPrime)
-        {
-            Console.WriteLine("Число является простым");
-        }
-        else
-        {
-            Console.WriteLine("Число НЕ является простым");
-        }
     }
 
     private static void minNumber()
     {
-        Console.WriteLine("Сколько чисел в последовательности");
 
-        int numbersCount = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Какие числа");
-
-        int minNumber = int.MaxValue;
-
-        for (int i = numbersCount; i > 0; i--)
-        {
-            int tempVal = int.Parse(Console.ReadLine());
-            if (tempVal < minNumber)
-            {
-                minNumber = tempVal;
-            }
-        }
-
-        Console.WriteLine($"Минимальное число: {minNumber}");
     }
 
     private static void guessTheNumber()
     {
-        Console.WriteLine("Какое максимальное число будем угадывать");
 
-        int maxNum = int.Parse(Console.ReadLine());
-
-        Random random = new Random();
-
-        int generatedNum = random.Next(maxNum + 1);
-
-        while (true)
-        {
-            Console.WriteLine("Введите число");
-
-            string readLine = Console.ReadLine();
-            if (readLine.Equals(""))
-            {
-                Console.WriteLine($"Вы не угадали, число: {generatedNum}");
-                break;
-            }
-            int insertedNum = int.Parse(readLine);
-
-            if (insertedNum == generatedNum)
-            {
-                Console.WriteLine($"Вы угадали, число: {generatedNum}");
-            }
-            else if (insertedNum > generatedNum)
-            {
-                Console.WriteLine("Введеное число больше");
-            }
-            else if (insertedNum < generatedNum)
-            {
-                Console.WriteLine("Введеное число меньше");
-            }
-        }
     }
 }
